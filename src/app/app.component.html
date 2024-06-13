@@ -1,3 +1,38 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="mycontent" type="push">
+    <ion-content>
+      <ion-list id="inbox-list">
+
+        <img src="../assets/img/avatar.png" >
+
+        <ion-list-header>
+          EUROFISH
+        </ion-list-header>
+        <!--ion-note>soporte&#64;eurofish.com</ion-note-->
+        <!--ion-note>{{usuario}}</ion-note-->
+        <!--ion-note>{{utils.userData | uppercase }}</ion-note-->
+        <ion-note>{{nama_cust | uppercase }}</ion-note>
+
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+            <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+
+      
+        <ion-button (click)="logout()" expand="block" color="danger">
+          <ion-icon name="power" item-left large></ion-icon> Salir
+        </ion-button>
+
+        <div class="ion-padding">
+          <ion-note>&copy; 2024</ion-note>
+        </div>
+    
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="mycontent"></ion-router-outlet>
 </ion-app>

@@ -8,8 +8,25 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'salida-limpieza',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./salida-limpieza/master/master.module').then( m => m.MasterPageModule),
+      },
+      {
+        path: 'detail',
+        loadChildren: () => import('./salida-limpieza/detail/detail.module').then( m => m.DetailPageModule)
+      },
+    ]
   },
 ];
 

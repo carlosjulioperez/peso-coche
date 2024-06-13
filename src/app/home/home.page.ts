@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UtilsService } from '../utils.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,20 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  username: any;
+  constructor(public utils: UtilsService) {
+    
+  }
+
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  async ngOnInit(){
+    
+  }
+
+  ionViewWillEnter(){
+    console.log("HomePage");
+    //this.utils.getLogin();
+    //this.username = this.utils.userData;
+  }
 
 }

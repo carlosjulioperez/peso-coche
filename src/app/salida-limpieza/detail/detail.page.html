@@ -1,0 +1,87 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/salida-limpieza"></ion-back-button>
+    </ion-buttons>
+    <ion-button slot="end">
+      <ion-icon name="pause"></ion-icon>Grabar parcial
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="registro">
+  <ion-card>
+    <ion-card-header class="ion-text-right">
+      <ion-card-title> <b>Lote Barco: </b>{{ registro.lote_barco }}</ion-card-title>
+    </ion-card-header>
+    <!-- <ion-card-content>
+      <p>{{ record.description }}</p>
+      <p>Active: {{ record.isActive ? 'Yes' : 'No' }}</p>
+    </ion-card-content> -->
+  </ion-card>
+
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-right">No. Mesa</ion-col>
+        <ion-col><b>{{registro.no_mesa}}</b></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-right">Especies-Talla</ion-col>
+        <ion-col><b>{{registro.especies_talla}}</b></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-right">Cliente</ion-col>
+        <ion-col><b>{{registro.cliente}}</b></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-right">Día de Producción</ion-col>
+        <ion-col><b>{{registro.dia_produccion}}</b></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-text-right">Turno</ion-col>
+        <ion-col><b>{{registro.turno}}</b></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-label style="padding-left: 16px;"><b>Tipo de Carne</b></ion-label>
+    <ion-segment [(ngModel)]="segTipoCarne">
+      <ion-segment-button value="L">
+        <ion-label>Lomo</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="F">
+        <ion-label>Flake</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="T">
+        <ion-label>Trozo</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="R">
+        <ion-label>Rallado</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- <ion-item-divider/> -->
+    <ion-row style="height: 10px;"></ion-row>
+    <ion-label style="padding-left: 16px;"><b>Tipo de Búsqueda</b></ion-label>
+    <ion-segment [(ngModel)]="segTipoBusqueda">
+      <ion-segment-button value="C">
+        <ion-label>Camera</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="M">
+        <ion-label>Manual</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    
+    <ion-row style="height: 10px;"></ion-row>
+    <ion-label style="padding-left: 16px;"><b>Scanner</b></ion-label>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8">
+          <ion-button expand="block">Escanear</ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button expand="block">Detener</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>
