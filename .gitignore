@@ -94,3 +94,4 @@ packages/react/test/build/
 packages/react-router/test/build/
 
 .npmrc
+borrar.sh

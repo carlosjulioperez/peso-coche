@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Registro } from '../registro.model';
 import { ActivatedRoute } from '@angular/router';
 import { RegistroService } from '../registro.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-detail',
@@ -13,8 +14,12 @@ export class DetailPage implements OnInit {
   registro!: Registro;
   segTipoCarne!: string; 
   segTipoBusqueda: string = "C";
+  
+  myForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private registroService: RegistroService) { }
+  constructor(private route: ActivatedRoute, private registroService: RegistroService) { 
+    this.myForm = this.controles();
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -28,4 +33,14 @@ export class DetailPage implements OnInit {
     });
   }
 
+  private controles(){
+    return new FormGroup({
+      txtCarrito: new FormControl(),
+      txtFecha: new FormControl()
+    });
+  }
+  
+  grabar(){
+    
+  }
 }

@@ -83,5 +83,25 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    
+    <form [formGroup]="myForm" (ngSubmit)="grabar()">
+      <ion-card>
+        <ion-card-content>
+          <ion-list>
+            <ion-item><ion-label>Carrito Escaneado</ion-label></ion-item>
+            <ion-item>
+              <ion-icon name="pricetag"></ion-icon>
+              <ion-input [readonly]="true" formControlName="txtCarrito"></ion-input>
+            </ion-item>
+            <ion-item><ion-label>Timestamp</ion-label></ion-item>
+            <ion-item>
+              <ion-icon name="calendar-clear"></ion-icon>
+              <ion-input [readonly]="true" formControlName="txtFecha"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
   </ion-card>
 </ion-content>
