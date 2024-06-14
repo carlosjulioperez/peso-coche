@@ -3,6 +3,7 @@ import { Registro } from '../registro.model';
 import { ActivatedRoute } from '@angular/router';
 import { RegistroService } from '../registro.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UtilsService } from 'src/app/utils.service';
 
 @Component({
   selector: 'app-detail',
@@ -12,12 +13,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class DetailPage implements OnInit {
 
   registro!: Registro;
-  segTipoCarne!: string; 
-  segTipoBusqueda: string = "C";
-  
   myForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private registroService: RegistroService) { 
+  constructor(private route: ActivatedRoute, private registroService: RegistroService, private utilsService: UtilsService) { 
     this.myForm = this.controles();
   }
 
@@ -26,21 +24,22 @@ export class DetailPage implements OnInit {
       const id = params['id'];
       this.registroService.getRegistros().subscribe(data => {
         this.registro = data.find(r => r.id === id);
-        console.log(this.registro);
+        // console.log(this.registro);
       })
-
-      this.segTipoCarne = "L";
     });
   }
 
   private controles(){
     return new FormGroup({
+      segTipoCarne: new FormControl('L'), 
+      segTipoBusqueda: new FormControl('C'),
       txtCarrito: new FormControl(),
-      txtFecha: new FormControl()
+      txtFecha: new FormControl(this.utilsService.getTimestamp())
     });
   }
   
   grabar(){
-    
+    console.log(this.registro);
+    console.log(this.myForm.value);
   }
 }
