@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/api.service';
 import { Registro } from '../registro.model';
 import { RegistroService } from '../registro.service';
-import { NavController } from '@ionic/angular';
+import { NavController, ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-master',
   templateUrl: './master.page.html',
   styleUrls: ['./master.page.scss'],
 })
-export class MasterPage implements OnInit {
+export class MasterPage implements ViewWillEnter {
   
   registros: Registro[] = [];
 
@@ -17,7 +16,7 @@ export class MasterPage implements OnInit {
               private navCtrl: NavController
             ) { }
 
-  ngOnInit(){
+  ionViewWillEnter(){
     this.registroService.getRegistros().subscribe(data => {
       this.registros = data;
       // console.log(data);
