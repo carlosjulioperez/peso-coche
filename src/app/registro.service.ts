@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from '../api.service';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,9 @@ export class RegistroService {
       {
         tipo_carne: values.tipo_carne,     
         tipo_busqueda: values.tipo_busqueda, 
-        no_coche: values.no_coche, 
-        fecha: values.fecha, 
-        completado: values.completado,
+        coche: values.coche, 
+        fecha_sa: values.fecha_sa, 
+        estado: values.estado,
         id: values.id
       }, {})
         .subscribe((res:any) => {

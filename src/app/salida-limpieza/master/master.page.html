@@ -28,10 +28,11 @@
       <ion-col>{{ registro.cliente }}</ion-col> 
       <ion-col>{{ registro.control_rociado }}</ion-col> 
       <ion-col>
-        <ion-button (click)="viewDetail(registro)" [disabled]="registro.completado">
+        <ion-button (click)="viewDetail(registro)">
+        <!-- <ion-button (click)="viewDetail(registro)" [disabled]="registro.completado"> -->
         <!-- <ion-button (click)="viewDetail(registro)" *ngIf="!registro.completado"> -->
           <!-- {{ registro.completado ? 'OK' : 'Completar' }} -->
-          {{ 'Completar' }}
+          {{ 'Editar' }}
         </ion-button>
       </ion-col>
     </ion-row>

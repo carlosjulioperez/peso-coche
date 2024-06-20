@@ -2,28 +2,20 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/salida-limpieza"></ion-back-button>
+      <ion-title>Salida Limpieza detalle</ion-title>
     </ion-buttons>
-    <ion-button slot="end" (click)="grabarParcial()">
-      <ion-icon name="pause"></ion-icon>Grabar parcial
-    </ion-button>
   </ion-toolbar>
 </ion-header>
     
 <ion-content *ngIf="registro">
-  <form [formGroup]="myForm" (ngSubmit)="grabarParcial()">
+  <form [formGroup]="myForm" (ngSubmit)="grabar()">
     <ion-card>
       <ion-card-header class="ion-text-right">
         <ion-card-title>
           <ion-label><b>Lote Barco: </b>{{ registro.lote_barco }}</ion-label>
         </ion-card-title>
       </ion-card-header>
-      <!-- <ion-card-content>
-        <p>{{ record.description }}</p>
-        <p>Active: {{ record.isActive ? 'Yes' : 'No' }}</p>
-      </ion-card-content> -->
-    </ion-card>
-
-    <ion-card>
+      
       <ion-grid>
         <ion-row>
           <ion-col class="ion-text-right">No. Mesa</ion-col>
@@ -45,67 +37,46 @@
           <ion-col class="ion-text-right">Turno</ion-col>
           <ion-col><b>{{registro.turno}}</b></ion-col>
         </ion-row>
-      </ion-grid>
-      <ion-label style="padding-left: 16px;"><b>Tipo de Carne</b></ion-label>
-      <ion-segment formControlName="tipo_carne">
-        <ion-segment-button value="L">
-          <ion-label>Lomo</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="F">
-          <ion-label>Flake</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="T">
-          <ion-label>Trozo</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="R">
-          <ion-label>Rallado</ion-label>
-        </ion-segment-button>
-      </ion-segment>
+        <ion-label style="padding-left: 16px;"><b>Tipo de Carne</b></ion-label>
+        <ion-segment formControlName="tipo_carne">
+          <ion-segment-button value="L">
+            <ion-label>Lomo</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="F">
+            <ion-label>Flake</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="T">
+            <ion-label>Trozo</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="R">
+            <ion-label>Rallado</ion-label>
+          </ion-segment-button>
+        </ion-segment>
 
-      <!-- <ion-item-divider/> -->
-      <ion-row style="height: 10px;"></ion-row>
-      <ion-label style="padding-left: 16px;"><b>Tipo de Búsqueda</b></ion-label>
-      <ion-segment formControlName="tipo_busqueda">
-        <ion-segment-button value="C">
-          <ion-label>Camera</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="M">
-          <ion-label>Manual</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-      
-      <ion-row style="height: 10px;"></ion-row>
-      <ion-label style="padding-left: 16px;"><b>Scanner</b></ion-label>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="8">
-            <ion-button style="--background: orange;" expand="block">Escanear</ion-button>
-          </ion-col>
-          <ion-col size="4">
-            <ion-button expand="block">Detener</ion-button>
-          </ion-col>
-        </ion-row>
+        <!-- <ion-item-divider/> -->
+        <ion-row style="height: 10px;"></ion-row>
+        <ion-label style="padding-left: 16px;"><b>Tipo de Búsqueda</b></ion-label>
+        <ion-segment formControlName="tipo_busqueda">
+          <ion-segment-button value="C">
+            <ion-label>Camera</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="M">
+            <ion-label>Manual</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        
+        <ion-row style="height: 10px;"></ion-row>
+        
+        <ion-list>
+          <ion-item><ion-label>Carrito</ion-label></ion-item>
+          <ion-item>
+            <ion-icon name="pricetag"></ion-icon>
+            <ion-input formControlName="coche"></ion-input>
+            <ion-button>Buscar</ion-button>
+          </ion-item>
+        </ion-list>
+        <ion-button color="success" (click)="grabar()">Grabar</ion-button>
       </ion-grid>
-      
-        <ion-card>
-          <ion-card-content>
-            <ion-list>
-              <ion-item><ion-label>Carrito Escaneado</ion-label></ion-item>
-              <ion-item>
-                <ion-icon name="pricetag"></ion-icon>
-                <ion-input [readonly]="true" formControlName="no_coche"></ion-input>
-              </ion-item>
-              <ion-item><ion-label>Timestamp</ion-label></ion-item>
-              <ion-item>
-                <ion-icon name="calendar-clear"></ion-icon>
-                <ion-input [readonly]="true" formControlName="fecha"></ion-input>
-              </ion-item>
-            </ion-list>
-            <div style="display: flex; justify-content: flex-end;">
-              <ion-button (click)="grabar()" style="--background: orange;">Grabar</ion-button>
-            </div>
-          </ion-card-content>
-        </ion-card>
     </ion-card>
   </form>
 </ion-content>

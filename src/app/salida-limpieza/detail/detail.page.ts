@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Registro } from '../registro.model';
 import { ActivatedRoute } from '@angular/router';
-import { RegistroService } from '../registro.service';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UtilsService } from 'src/app/utils.service';
 import { NavController } from '@ionic/angular';
+import { Registro } from '../../registro.model';
+import { RegistroService } from '../../registro.service';
+import { UtilsService } from '../../utils.service';
+import { EstadoCoche } from '../../estado-coche';
 
 @Component({
   selector: 'app-detail',
@@ -41,9 +42,9 @@ export class DetailPage implements OnInit {
       id: new FormControl(), 
       tipo_carne: new FormControl('L'), 
       tipo_busqueda: new FormControl('C'),
-      no_coche: new FormControl(),
-      fecha: new FormControl(),
-      completado: new FormControl()
+      coche: new FormControl(),
+      fecha_sa: new FormControl(),
+      estado: new FormControl()
     });
   }
   
@@ -51,10 +52,6 @@ export class DetailPage implements OnInit {
     this.setValue('id', this.registro.id);
     this.setValue('tipo_carne', this.registro.tipo_carne);
     this.setValue('tipo_busqueda', this.registro.tipo_busqueda);
-    this.setValue('no_coche', this.registro.no_coche);
-    this.setValue('fecha', this.registro.fecha);
-    this.setValue('completado', false);
-    
     // this.myForm.get('id')?.setValue(this.registro.id);
     // this.myForm.get('tipo_carne')?.setValue(this.registro.tipo_carne);
   }
@@ -64,22 +61,19 @@ export class DetailPage implements OnInit {
       this.myForm.get(nombre)?.setValue(valor);
   }
   
-  grabarParcial(){
+  grabar(){
     console.log(this.registro);
     console.log(this.myForm.value);
     
-    this.myForm.get('fecha')?.setValue(this.utilsService.getTimestamp());
+    this.setValue('fecha_sa', this.utilsService.getTimestamp());
+    this.setValue('estado', EstadoCoche.Transferencia);
+
     this.registroService.updateSalidaLimpieza(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
       alert("Datos actualizados." + resp);
       this.navCtrl.navigateForward('salida-limpieza', {} );
     });
-  }
-
-  grabar(){
-    this.myForm.get('completado')?.setValue(true);
-    this.grabarParcial();
   }
 
 }

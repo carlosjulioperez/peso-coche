@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Registro } from '../registro.model';
-import { RegistroService } from '../registro.service';
+import { Registro } from '../../registro.model';
+import { RegistroService } from '../../registro.service';
 import { NavController, ViewWillEnter } from '@ionic/angular';
 
 @Component({
