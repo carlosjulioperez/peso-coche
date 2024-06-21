@@ -28,6 +28,19 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'transferencia',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./transferencia/master/master.module').then( m => m.MasterPageModule),
+      },
+      {
+        path: 'detail',
+        loadChildren: () => import('./transferencia/detail/detail.module').then( m => m.DetailPageModule)
+      },
+    ]
+  },
 ];
 
 @NgModule({

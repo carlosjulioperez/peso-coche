@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { Registro } from '../../registro.model';
-import { RegistroService } from '../../registro.service';
-import { UtilsService } from '../../utils.service';
-import { EstadoCoche } from '../../estado-coche';
+import { RegistroService } from '../../services/registro.service';
+import { UtilsService } from '../../services/utils.service';
+import { EstadoCoche } from '../../enums/estado-coche';
 
 @Component({
   selector: 'app-detail',
@@ -29,7 +29,7 @@ export class DetailPage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const id = params['id'];
-      this.registroService.getRegistros().subscribe(data => {
+      this.registroService.getSalidaLimpieza().subscribe(data => {
         this.registro = data.find(r => r.id === id);
         // console.log(this.registro);
         this.fillControls();

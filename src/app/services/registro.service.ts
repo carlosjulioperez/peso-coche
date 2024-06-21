@@ -10,10 +10,13 @@ export class RegistroService {
 
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
-  getRegistros(): Observable<any[]>{
+  getSalidaLimpieza(): Observable<any[]>{
     return this.http.get<any[]>(this.apiService.getApiUrl()+'/salidalimpieza')
   }
 
+  getTransferencia(): Observable<any[]>{
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/transferencia')
+  }
 
   updateSalidaLimpieza(values:any){
     return new Promise((resolve, reject) => {

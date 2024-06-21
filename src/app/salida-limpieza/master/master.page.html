@@ -14,7 +14,7 @@
         <ion-col><b>No. Mesa</b></ion-col>
         <ion-col><b>Lote Barco</b></ion-col>
         <ion-col><b>Especies Talla</b></ion-col>
-        <ion-col><b>Dia Produccion</b></ion-col>
+        <ion-col><b>Día Producción</b></ion-col>
         <ion-col><b>Cliente</b></ion-col>
         <ion-col><b>Control Rociado</b></ion-col>
         <ion-col><b>Acciones</b></ion-col>
@@ -29,9 +29,6 @@
       <ion-col>{{ registro.control_rociado }}</ion-col> 
       <ion-col>
         <ion-button (click)="viewDetail(registro)">
-        <!-- <ion-button (click)="viewDetail(registro)" [disabled]="registro.completado"> -->
-        <!-- <ion-button (click)="viewDetail(registro)" *ngIf="!registro.completado"> -->
-          <!-- {{ registro.completado ? 'OK' : 'Completar' }} -->
           {{ 'Editar' }}
         </ion-button>
       </ion-col>

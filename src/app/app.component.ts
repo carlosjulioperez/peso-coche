@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { UtilsService } from './utils.service';
+import { UtilsService } from './services/utils.service';
 import { Storage } from '@ionic/storage-angular';
 
 @Component({
