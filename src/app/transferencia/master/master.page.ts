@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Registro } from '../../registro.model';
 import { RegistroService } from '../../services/registro.service';
 import { NavController, ViewWillEnter } from '@ionic/angular';
-import { TipoCarneDesc } from 'src/app/enums/tipo-carne';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-master',
@@ -13,11 +13,12 @@ export class MasterPage implements ViewWillEnter {
   
   registros: Registro[] = [];
 
-  constructor(private registroService: RegistroService, private navCtrl: NavController) { }
+  constructor(private utilsService: UtilsService, private registroService: RegistroService, private navCtrl: NavController) { }
 
   ionViewWillEnter(){
     this.registroService.getTransferencia().subscribe(data => {
       this.registros = data;
+      //console.log(data);
     });
   }
   
@@ -26,9 +27,8 @@ export class MasterPage implements ViewWillEnter {
       queryParams: { id: registro.id }
     });
   }
+  
   getTipoCarne(tipo: string): string {
-    //const value = (myObject as { [key: string]: string })[propertyName]; // Type assertion
-    const valor = (TipoCarneDesc as { [key: string]: string })[tipo];
-    return valor;
+    return this.utilsService.getTipoCarne(tipo);
   }
 }

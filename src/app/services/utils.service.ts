@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-//import { Storage } from '@ionic/storage';
 import { Storage } from '@ionic/storage-angular';
 import { Subject } from 'rxjs';
+import { TipoCarneDesc } from '../enums/tipo-carne';
 
 @Injectable({
   providedIn: 'root'
@@ -85,4 +85,11 @@ export class UtilsService {
   
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
   }
+
+  getTipoCarne(tipo: string): string {
+    //const value = (myObject as { [key: string]: string })[propertyName]; // Type assertion
+    const valor = (TipoCarneDesc as { [key: string]: string })[tipo];
+    return valor;
+  }
+
 }

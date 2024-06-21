@@ -6,6 +6,7 @@ import { Registro } from '../../registro.model';
 import { RegistroService } from '../../services/registro.service';
 import { UtilsService } from '../../services/utils.service';
 import { EstadoCoche } from '../../enums/estado-coche';
+import { TipoCarne } from 'src/app/enums/tipo-carne';
 
 @Component({
   selector: 'app-detail',
@@ -40,7 +41,8 @@ export class DetailPage implements OnInit {
   private controles(){
     return new FormGroup({
       id: new FormControl(), 
-      tipo_carne: new FormControl('L'), 
+      // tipo_carne: new FormControl('L'), 
+      tipo_carne: new FormControl(TipoCarne.Lomo), 
       tipo_busqueda: new FormControl('C'),
       coche: new FormControl(),
       fecha_sa: new FormControl(),
@@ -66,7 +68,7 @@ export class DetailPage implements OnInit {
     console.log(this.myForm.value);
     
     this.setValue('fecha_sa', this.utilsService.getTimestamp());
-    this.setValue('estado', EstadoCoche.Transferencia);
+    this.setValue('estado', EstadoCoche.Transferencia); //siguiente flujo
 
     this.registroService.updateSalidaLimpieza(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
