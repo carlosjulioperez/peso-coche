@@ -27,9 +27,8 @@
       <ion-col>{{ registro.lote_barco }}</ion-col> 
       <ion-col>{{ registro.especies_talla }}</ion-col> 
       <ion-col>{{ registro.no_mesa }}</ion-col> 
-      <!-- <ion-col>{{ registro.tipo_carne }} </ion-col>  -->
       <ion-col>{{ getTipoCarne(registro.tipo_carne) }} </ion-col> 
-      <ion-col>{{ registro.fecha_sa }}</ion-col> 
+      <ion-col>{{ getFechaSalida(registro.fecha_sa) }} </ion-col> 
       <ion-col>
         <ion-button (click)="viewDetail(registro)">{{ 'Editar' }}</ion-button>
       </ion-col>

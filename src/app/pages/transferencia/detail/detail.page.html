@@ -39,11 +39,11 @@
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-right">Tipo de Carne</ion-col>
-          <ion-col><b>{{ getTipoCarne(registro.tipo_carne)}}</b></ion-col>
+          <ion-col><b>{{ getTipoCarne()}}</b></ion-col>
         </ion-row>
         <ion-row>
-          <ion-col class="ion-text-right">Fecha</ion-col>
-          <ion-col><b>{{registro.turno}}</b></ion-col>
+          <ion-col class="ion-text-right">Fecha Salida Limpieza</ion-col>
+          <ion-col><b>{{ getFechaSalida() }}</b></ion-col>
         </ion-row>
 
         <ion-row style="height: 10px;"></ion-row>
@@ -52,11 +52,10 @@
           <ion-item><ion-label>Coche Nuevo</ion-label></ion-item>
           <ion-item>
             <ion-icon name="pricetag"></ion-icon>
-            <ion-input formControlName="coche"></ion-input>
-            <!-- <ion-button>Buscar</ion-button> -->
+            <ion-input formControlName="coche_nuevo"></ion-input>
           </ion-item>
         </ion-list>
-        <ion-button color="success" (click)="grabar()">Grabar</ion-button>
+        <ion-button color="success" (click)="confirmarGrabar()">Grabar</ion-button>
       </ion-grid>
     </ion-card>
   </form>

@@ -45,7 +45,7 @@ export class AppComponent {
           break;
         case "admin":
           this.appPages.push({ title: 'Salida Limpieza', url: '/salida-limpieza', icon: 'file-tray-full' });
-          this.appPages.push({ title: 'Coche Transferencia', url: '/coche-transferencia', icon: 'file-tray-stacked' });
+          this.appPages.push({ title: 'Coche Transferencia', url: '/transferencia', icon: 'file-tray-stacked' });
           this.appPages.push({ title: 'Coche Nuevo', url: '/coche-nuevo', icon: 'file-tray' });
           this.appPages.push({ title: 'Coche Tara', url: '/coche-tara', icon: 'reload-circle' });
           this.appPages.push({ title: 'Asignación Coche', url: '/asignacion-coche', icon: 'scan-circle' });

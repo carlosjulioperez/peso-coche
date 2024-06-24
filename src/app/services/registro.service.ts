@@ -38,4 +38,23 @@ export class RegistroService {
         });
     });
   }
+  
+  updateTransferencia(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/updatetransferencia', 
+      {
+        fecha_tr: values.fecha_tr, 
+        coche_nuevo: values.coche_nuevo,
+        estado: values.estado,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
+  }
 }

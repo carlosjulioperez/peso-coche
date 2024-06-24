@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,18 +13,18 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'salida-limpieza',
     children: [
       {
         path: '',
-        loadChildren: () => import('./salida-limpieza/master/master.module').then( m => m.MasterPageModule),
+        loadChildren: () => import('./pages/salida-limpieza/master/master.module').then( m => m.MasterPageModule),
       },
       {
         path: 'detail',
-        loadChildren: () => import('./salida-limpieza/detail/detail.module').then( m => m.DetailPageModule)
+        loadChildren: () => import('./pages/salida-limpieza/detail/detail.module').then( m => m.DetailPageModule)
       },
     ]
   },
@@ -33,11 +33,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./transferencia/master/master.module').then( m => m.MasterPageModule),
+        loadChildren: () => import('./pages/transferencia/master/master.module').then( m => m.MasterPageModule),
       },
       {
         path: 'detail',
-        loadChildren: () => import('./transferencia/detail/detail.module').then( m => m.DetailPageModule)
+        loadChildren: () => import('./pages/transferencia/detail/detail.module').then( m => m.DetailPageModule)
       },
     ]
   },

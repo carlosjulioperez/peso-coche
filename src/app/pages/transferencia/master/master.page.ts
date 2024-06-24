@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Registro } from '../../registro.model';
-import { RegistroService } from '../../services/registro.service';
+import { Registro } from '../../../models/registro.model';
+import { RegistroService } from '../../../services/registro.service';
 import { NavController, ViewWillEnter } from '@ionic/angular';
-import { UtilsService } from 'src/app/services/utils.service';
+import { UtilsService } from '../../../services/utils.service';
 
 @Component({
   selector: 'app-master',
@@ -30,5 +30,9 @@ export class MasterPage implements ViewWillEnter {
   
   getTipoCarne(tipo: string): string {
     return this.utilsService.getTipoCarne(tipo);
+  }
+
+  getFechaSalida(fecha: string): string {
+    return this.utilsService.convertDate(fecha);
   }
 }

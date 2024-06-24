@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
-import { ApiService } from '../services/api.service';
-import { UtilsService } from '../services/utils.service';
-//import { Storage } from '@ionic/storage';
+import { ApiService } from '../../services/api.service';
+import { UtilsService } from '../../services/utils.service';
 import { Storage } from '@ionic/storage-angular';
 
 @Component({

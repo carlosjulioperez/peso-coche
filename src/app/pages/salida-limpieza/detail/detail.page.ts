@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { Registro } from '../../registro.model';
-import { RegistroService } from '../../services/registro.service';
-import { UtilsService } from '../../services/utils.service';
-import { EstadoCoche } from '../../enums/estado-coche';
-import { TipoCarne } from 'src/app/enums/tipo-carne';
+import { AlertController } from '@ionic/angular';
+import { Registro } from '../../../models/registro.model';
+import { RegistroService } from '../../../services/registro.service';
+import { UtilsService } from '../../../services/utils.service';
+import { EstadoCoche } from '../../../enums/estado-coche';
+import { TipoCarne } from '../../../enums/tipo-carne';
 
 @Component({
   selector: 'app-detail',
@@ -21,6 +22,7 @@ export class DetailPage implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private navCtrl: NavController, 
+    private alertCtrl: AlertController,
     private registroService: RegistroService, 
     private utilsService: UtilsService
   ){ 
@@ -58,22 +60,43 @@ export class DetailPage implements OnInit {
     // this.myForm.get('tipo_carne')?.setValue(this.registro.tipo_carne);
   }
 
+  async confirmarGrabar(){
+    const alert = await this.alertCtrl.create({
+      header: 'Confirme',
+      message: '¿Desea grabar los cambios?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Grabar',
+          handler: () => {
+            // Call your save function here
+            this.grabar();
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
   private setValue(nombre: string, valor: any){
     if (valor!==null && valor!== undefined)
       this.myForm.get(nombre)?.setValue(valor);
   }
   
   grabar(){
-    console.log(this.registro);
-    console.log(this.myForm.value);
+    // console.log(this.registro);
+    // console.log(this.myForm.value);
     
-    this.setValue('fecha_sa', this.utilsService.getTimestamp());
+    this.setValue('fecha_sa', this.utilsService.getDateToString(new Date()));
     this.setValue('estado', EstadoCoche.Transferencia); //siguiente flujo
 
     this.registroService.updateSalidaLimpieza(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
-      alert("Datos actualizados." + resp);
+      // alert("Datos actualizados." + resp);
       this.navCtrl.navigateForward('salida-limpieza', {} );
     });
   }
