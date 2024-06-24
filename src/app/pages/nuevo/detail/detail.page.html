@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/nuevo"></ion-back-button>
+      <ion-title>Nuevo: Detalle</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+    
+<ion-content *ngIf="registro">
+  <form [formGroup]="myForm" (ngSubmit)="grabar()">
+    <ion-card>
+      <ion-card-header class="ion-text-right">
+        <ion-card-title>
+          <ion-label><b>Lote Barco: </b>{{ registro.lote_barco }}</ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-right">Día de Producción</ion-col>
+          <ion-col><b>{{registro.dia_produccion}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Control Rociado</ion-col>
+          <ion-col><b>{{registro.control_rociado}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Coche Salida de Limpieza</ion-col>
+          <ion-col><b>{{registro.coche}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Especies-Talla</ion-col>
+          <ion-col><b>{{registro.especies_talla}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">No. Mesa</ion-col>
+          <ion-col><b>{{registro.no_mesa}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Tipo de Carne</ion-col>
+          <ion-col><b>{{ getTipoCarne()}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Fecha Transferencia</ion-col>
+          <ion-col><b>{{ getFechaTransferencia() }}</b></ion-col>
+        </ion-row>
+
+        <ion-row style="height: 10px;"></ion-row>
+        
+        <ion-label style="padding-left: 16px;"><b>Turno</b></ion-label>
+        <ion-segment formControlName="turno_nuevo">
+          <ion-segment-button value="1">
+            <ion-label>1</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="2">
+            <ion-label>2</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="3">
+            <ion-label>3</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+        <ion-button color="success" (click)="confirmarGrabar()">Grabar</ion-button>
+      </ion-grid>
+    </ion-card>
+  </form>
+</ion-content>

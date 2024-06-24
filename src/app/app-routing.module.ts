@@ -41,6 +41,19 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'nuevo',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/nuevo/master/master.module').then( m => m.MasterPageModule)
+      },
+      {
+        path: 'detail',
+        loadChildren: () => import('./pages/nuevo/detail/detail.module').then( m => m.DetailPageModule)
+      }
+    ]
+  },
 ];
 
 @NgModule({

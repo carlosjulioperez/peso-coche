@@ -3,3 +3,6 @@ GET http://localhost:3000/salidalimpieza
 
 ### Get all
 GET http://localhost:3000/transferencia
+
+### Get all
+GET http://localhost:3000/nuevo
