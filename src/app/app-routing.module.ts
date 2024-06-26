@@ -80,6 +80,19 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'tara',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/tara/master/master.module').then( m => m.MasterPageModule)
+      },
+      {
+        path: 'detail',
+        loadChildren: () => import('./pages/tara/detail/detail.module').then( m => m.DetailPageModule)
+      }
+    ]
+  }
 ];
 
 @NgModule({

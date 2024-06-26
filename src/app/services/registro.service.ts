@@ -29,6 +29,10 @@ export class RegistroService {
     return this.http.get<any[]>(this.apiService.getApiUrl()+'/asignacion')
   }
 
+  getTara(): Observable<any[]>{
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/tara')
+  }
+
   updateSalidaLimpieza(values:any){
     return new Promise((resolve, reject) => {
       this.http.put(this.apiService.getApiUrl()+'/updatesalidalimpieza', 
@@ -113,6 +117,26 @@ export class RegistroService {
       {
         fecha_as: values.fecha_as, 
         codigo_video_jet: values.codigo_video_jet,
+        estado: values.estado,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
+  }
+  
+  updateTara(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/updatetara', 
+      {
+        fecha_ta: values.fecha_ta, 
+        peso_tara: values.peso_tara,
+        peso_neto: values.peso_neto,
         estado: values.estado,
         id: values.id
       }, {})

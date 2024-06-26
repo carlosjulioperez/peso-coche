@@ -4,5 +4,6 @@ export enum EstadoCoche {
     Nuevo = "NU",
     Pesaje = "PE",
     Asignacion = "AS",
-    Tara = "TA"
+    Tara = "TA",
+    Finalizado = "FI"
 }

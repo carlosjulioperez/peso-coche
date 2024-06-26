@@ -49,7 +49,7 @@ export class AppComponent {
           this.appPages.push({ title: 'Coche Nuevo', url: '/nuevo', icon: 'file-tray' });
           this.appPages.push({ title: 'Pesaje Coche', url: '/pesaje', icon: 'sync-circle' });
           this.appPages.push({ title: 'Asignación Coche', url: '/asignacion', icon: 'scan-circle' });
-          this.appPages.push({ title: 'Coche Tara', url: '/coche-tara', icon: 'reload-circle' });
+          this.appPages.push({ title: 'Coche Tara', url: '/tara', icon: 'reload-circle' });
           break;
       }
     }
