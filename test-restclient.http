@@ -6,3 +6,6 @@ GET http://localhost:3000/transferencia
 
 ### Get all
 GET http://localhost:3000/nuevo
+
+### Get all
+GET http://localhost:3000/pesaje

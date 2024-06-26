@@ -51,6 +51,19 @@ const routes: Routes = [
       {
         path: 'detail',
         loadChildren: () => import('./pages/nuevo/detail/detail.module').then( m => m.DetailPageModule)
+      },
+    ]
+  },
+  {
+    path: 'pesaje',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/pesaje/master/master.module').then( m => m.MasterPageModule)
+      },
+      {
+        path: 'detail',
+        loadChildren: () => import('./pages/pesaje/detail/detail.module').then( m => m.DetailPageModule)
       }
     ]
   },

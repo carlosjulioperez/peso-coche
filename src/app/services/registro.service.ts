@@ -22,6 +22,10 @@ export class RegistroService {
     return this.http.get<any[]>(this.apiService.getApiUrl()+'/nuevo')
   }
 
+  getPesaje(): Observable<any[]>{
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/pesaje')
+  }
+
   updateSalidaLimpieza(values:any){
     return new Promise((resolve, reject) => {
       this.http.put(this.apiService.getApiUrl()+'/updatesalidalimpieza', 
@@ -68,6 +72,25 @@ export class RegistroService {
       {
         fecha_nu: values.fecha_nu, 
         turno_nuevo: values.turno_nuevo,
+        estado: values.estado,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
+  }
+  
+  updatePesaje(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/updatepesaje', 
+      {
+        fecha_pe: values.fecha_pe, 
+        peso_bruto: values.peso_bruto,
         estado: values.estado,
         id: values.id
       }, {})
