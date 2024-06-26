@@ -67,6 +67,19 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'asignacion',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/asignacion/master/master.module').then( m => m.MasterPageModule)
+      },
+      {
+        path: 'detail',
+        loadChildren: () => import('./pages/asignacion/detail/detail.module').then( m => m.DetailPageModule)
+      }
+    ]
+  },
 ];
 
 @NgModule({

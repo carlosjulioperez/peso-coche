@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/asignacion"></ion-back-button>
+      <ion-title>Asignación: Detalle</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+    
+<ion-content *ngIf="registro">
+  <form [formGroup]="myForm" (ngSubmit)="grabar()">
+    <ion-card>
+      <ion-card-header class="ion-text-right">
+        <ion-card-title>
+          <ion-label><b>Lote Barco: </b>{{ registro.lote_barco }}</ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-right">Día de Producción</ion-col>
+          <ion-col><b>{{registro.dia_produccion}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Control Rociado</ion-col>
+          <ion-col><b>{{registro.control_rociado}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Coche actual</ion-col>
+          <ion-col><b>{{registro.coche}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Especies-Talla</ion-col>
+          <ion-col><b>{{registro.especies_talla}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">No. Mesa</ion-col>
+          <ion-col><b>{{registro.no_mesa}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Código VideoJet</ion-col>
+          <ion-col><b>{{ registro.codigo_video_jet}}</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-right">Fecha Pesaje</ion-col>
+          <ion-col><b>{{ getFechaPesaje() }}</b></ion-col>
+        </ion-row>
+
+        <ion-row style="height: 10px;"></ion-row>
+        
+        <ion-list>
+          <ion-item><ion-label>Código VideoJet</ion-label></ion-item>
+          <ion-item>
+            <ion-icon name="rocket"></ion-icon>
+            <ion-input formControlName="codigo_video_jet"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-button color="success" (click)="confirmarGrabar()">Grabar</ion-button>
+      </ion-grid>
+    </ion-card>
+  </form>
+</ion-content>

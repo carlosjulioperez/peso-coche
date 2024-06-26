@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Asignación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid id="griData">
+    <ion-row>
+        <ion-col><b>Día Prod.</b></ion-col>
+        <ion-col><b>Rociado</b></ion-col>
+        <ion-col><b>Coche Nuevo</b></ion-col>
+        <ion-col><b>Lote Barco</b></ion-col>
+        <ion-col><b>Esp. Talla</b></ion-col>
+        <ion-col><b>No. Mesa</b></ion-col>
+        <ion-col><b>Código VideoJet</b></ion-col>
+        <ion-col><b>Fecha</b></ion-col>
+        <ion-col><b>Acciones</b></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let registro of registros">
+      <ion-col>{{ registro.dia_produccion }}</ion-col> 
+      <ion-col>{{ registro.control_rociado }}</ion-col> 
+      <ion-col>{{ registro.coche }}</ion-col> 
+      <ion-col>{{ registro.lote_barco }}</ion-col> 
+      <ion-col>{{ registro.especies_talla }}</ion-col> 
+      <ion-col>{{ registro.no_mesa }}</ion-col> 
+      <ion-col>{{ registro.codigo_video_jet }} </ion-col> 
+      <ion-col>{{ getFechaPesaje(registro.fecha_pe) }} </ion-col> 
+      <ion-col>
+        <ion-button (click)="viewDetail(registro)">{{ 'Editar' }}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
