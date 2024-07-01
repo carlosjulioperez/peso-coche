@@ -33,6 +33,6 @@ export class MasterPage implements ViewWillEnter {
   }
 
   getFechaTransferencia(fecha: string): string {
-    return this.utilsService.convertDate(fecha);
+    return this.utilsService.getFechaUTC5(fecha);
   }
 }

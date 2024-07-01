@@ -100,6 +100,6 @@ export class DetailPage implements OnInit {
   }
 
   getFechaSalida(): string {
-    return this.utilsService.convertDate(this.registro.fecha_sa);
+    return this.utilsService.getFechaUTC5(this.registro.fecha_sa);
   }
 }

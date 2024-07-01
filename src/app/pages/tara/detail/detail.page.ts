@@ -118,6 +118,6 @@ export class DetailPage implements OnInit {
   }
 
   getFechaAsignacion(): string {
-    return this.utilsService.convertDate(this.registro.fecha_as);
+    return this.utilsService.getFechaUTC5(this.registro.fecha_as);
   }
 }

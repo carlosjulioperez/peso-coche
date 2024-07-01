@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { Subject } from 'rxjs';
 import { TipoCarneDesc } from '../enums/tipo-carne';
+import * as moment from 'moment-timezone';
 
 @Injectable({
   providedIn: 'root'
@@ -85,21 +86,17 @@ export class UtilsService {
   
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
   }
-  convertDate(dateString: string): string {
-    // Parse the date string assuming ISO 8601 format with UTC timezone
-    const date = new Date(dateString);
-  
-    // Get the individual components
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-indexed
-    const day = String(date.getDate()).padStart(2, '0');
-    const hours = String(date.getUTCHours()).padStart(2, '0'); // Convert to UTC hours
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
-    const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
-  
-    // Format the date in the desired format
-    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}`;
+
+  getFechaUTC5(fecha: string): string {
+    // Parse the date string in UTC
+    const utcDate = new Date(fecha);
+    // Get the offset in milliseconds between UTC and UTC-05:00
+    const offset = -utcDate.getTimezoneOffset() * 60 * 1000;
+    // Create a new date object with the offset applied
+    const localDate = new Date(utcDate.getTime() + offset);
+    // Format the date in the desired format (YYYY-MM-DD HH:MM:SS)
+    const formattedDate = localDate.toISOString().slice(0, 19).replace('T', ' ');
+    return formattedDate;
   }
 
   getTipoCarne(tipo: string): string {

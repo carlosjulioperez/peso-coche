@@ -29,6 +29,6 @@ export class MasterPage implements ViewWillEnter {
   }
   
   getFechaAsignacion(fecha: string): string {
-    return this.utilsService.convertDate(fecha);
+    return this.utilsService.getFechaUTC5(fecha);
   }
 }

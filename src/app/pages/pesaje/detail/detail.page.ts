@@ -100,6 +100,6 @@ export class DetailPage implements OnInit {
   }
 
   getFechaNuevo(): string {
-    return this.utilsService.convertDate(this.registro.fecha_nu);
+    return this.utilsService.getFechaUTC5(this.registro.fecha_nu);
   }
 }
