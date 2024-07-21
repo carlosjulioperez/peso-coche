@@ -11,133 +11,121 @@ export class RegistroService {
   constructor(private http: HttpClient, private apiService: ApiService) { }
 
   getSalidaLimpieza(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiService.getApiUrl()+'/salidalimpieza')
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/getall/salidalimpieza')
+  }
+
+  putSalidaLimpieza(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/put/salidalimpieza', 
+      {
+        tipo_carne: values.tipo_carne,     
+        coche: values.coche, 
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
   }
 
   getTransferencia(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiService.getApiUrl()+'/transferencia')
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/getall/transferencia')
+  }
+  
+  putTransferencia(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/put/transferencia', 
+      {
+        coche_nuevo: values.coche_nuevo,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
   }
 
   getNuevo(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiService.getApiUrl()+'/nuevo')
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/getall/nuevo')
+  }
+  
+  putNuevo(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/put/nuevo', 
+      {
+        turno_nuevo: values.turno_nuevo,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
   }
 
   getPesaje(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiService.getApiUrl()+'/pesaje')
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/getall/pesaje')
   }
+
+  putPesaje(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/put/pesaje', 
+      {
+        peso_bruto: values.peso_bruto,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
+  }
+
   getAsignacion(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiService.getApiUrl()+'/asignacion')
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/getall/asignacion')
+  }
+  
+  putAsignacion(values:any){
+    return new Promise((resolve, reject) => {
+      this.http.put(this.apiService.getApiUrl()+'/put/asignacion', 
+      {
+        codigo_video_jet: values.codigo_video_jet,
+        id: values.id
+      }, {})
+        .subscribe((res:any) => {
+          //resolve(res.json());
+          resolve(res);
+        }, (err) => {
+          reject(err);
+          //console.log(err);
+        });
+    });
   }
 
   getTara(): Observable<any[]>{
-    return this.http.get<any[]>(this.apiService.getApiUrl()+'/tara')
+    return this.http.get<any[]>(this.apiService.getApiUrl()+'/getall/tara')
   }
 
-  updateSalidaLimpieza(values:any){
+  putTara(values:any){
     return new Promise((resolve, reject) => {
-      this.http.put(this.apiService.getApiUrl()+'/updatesalidalimpieza', 
+      this.http.put(this.apiService.getApiUrl()+'/put/tara', 
       {
-        tipo_carne: values.tipo_carne,     
-        tipo_busqueda: values.tipo_busqueda, 
-        coche: values.coche, 
-        fecha_sa: values.fecha_sa, 
-        estado: values.estado,
-        id: values.id
-      }, {})
-        .subscribe((res:any) => {
-          //resolve(res.json());
-          resolve(res);
-        }, (err) => {
-          reject(err);
-          //console.log(err);
-        });
-    });
-  }
-  
-  updateTransferencia(values:any){
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiService.getApiUrl()+'/updatetransferencia', 
-      {
-        fecha_tr: values.fecha_tr, 
-        coche_nuevo: values.coche_nuevo,
-        estado: values.estado,
-        id: values.id
-      }, {})
-        .subscribe((res:any) => {
-          //resolve(res.json());
-          resolve(res);
-        }, (err) => {
-          reject(err);
-          //console.log(err);
-        });
-    });
-  }
-  
-  updateNuevo(values:any){
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiService.getApiUrl()+'/updatenuevo', 
-      {
-        fecha_nu: values.fecha_nu, 
-        turno_nuevo: values.turno_nuevo,
-        estado: values.estado,
-        id: values.id
-      }, {})
-        .subscribe((res:any) => {
-          //resolve(res.json());
-          resolve(res);
-        }, (err) => {
-          reject(err);
-          //console.log(err);
-        });
-    });
-  }
-  
-  updatePesaje(values:any){
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiService.getApiUrl()+'/updatepesaje', 
-      {
-        fecha_pe: values.fecha_pe, 
-        peso_bruto: values.peso_bruto,
-        estado: values.estado,
-        id: values.id
-      }, {})
-        .subscribe((res:any) => {
-          //resolve(res.json());
-          resolve(res);
-        }, (err) => {
-          reject(err);
-          //console.log(err);
-        });
-    });
-  }
-  
-  updateAsignacion(values:any){
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiService.getApiUrl()+'/updateasignacion', 
-      {
-        fecha_as: values.fecha_as, 
-        codigo_video_jet: values.codigo_video_jet,
-        estado: values.estado,
-        id: values.id
-      }, {})
-        .subscribe((res:any) => {
-          //resolve(res.json());
-          resolve(res);
-        }, (err) => {
-          reject(err);
-          //console.log(err);
-        });
-    });
-  }
-  
-  updateTara(values:any){
-    return new Promise((resolve, reject) => {
-      this.http.put(this.apiService.getApiUrl()+'/updatetara', 
-      {
-        fecha_ta: values.fecha_ta, 
         peso_tara: values.peso_tara,
         peso_neto: values.peso_neto,
-        estado: values.estado,
         id: values.id
       }, {})
         .subscribe((res:any) => {

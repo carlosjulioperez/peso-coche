@@ -6,7 +6,6 @@ import { AlertController } from '@ionic/angular';
 import { Registro } from '../../../models/registro.model';
 import { RegistroService } from '../../../services/registro.service';
 import { UtilsService } from '../../../services/utils.service';
-import { EstadoCoche } from '../../../enums/estado-coche';
 
 @Component({
   selector: 'app-detail',
@@ -42,9 +41,7 @@ export class DetailPage implements OnInit {
   private controles(){
     return new FormGroup({
       id: new FormControl(), 
-      fecha_tr: new FormControl(), 
-      coche_nuevo: new FormControl(),
-      estado: new FormControl()
+      coche_nuevo: new FormControl()
     });
   }
   
@@ -84,10 +81,7 @@ export class DetailPage implements OnInit {
     // console.log(this.registro);
     // console.log(this.myForm.value);
     
-    this.setValue('fecha_tr', this.utilsService.getDateToString(new Date()));
-    this.setValue('estado', EstadoCoche.Nuevo); //siguiente flujo
-
-    this.registroService.updateTransferencia(this.myForm.value).then(resp=>{
+    this.registroService.putTransferencia(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
       // alert("Datos actualizados." + resp);

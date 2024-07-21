@@ -6,7 +6,6 @@ import { AlertController } from '@ionic/angular';
 import { Registro } from '../../../models/registro.model';
 import { RegistroService } from '../../../services/registro.service';
 import { UtilsService } from '../../../services/utils.service';
-import { EstadoCoche } from '../../../enums/estado-coche';
 import { TipoCarne } from '../../../enums/tipo-carne';
 
 @Component({
@@ -45,17 +44,13 @@ export class DetailPage implements OnInit {
       id: new FormControl(), 
       // tipo_carne: new FormControl('L'), 
       tipo_carne: new FormControl(TipoCarne.Lomo), 
-      tipo_busqueda: new FormControl('C'),
       coche: new FormControl(),
-      fecha_sa: new FormControl(),
-      estado: new FormControl()
     });
   }
   
   private fillControls(){
     this.setValue('id', this.registro.id);
     this.setValue('tipo_carne', this.registro.tipo_carne);
-    this.setValue('tipo_busqueda', this.registro.tipo_busqueda);
     // this.myForm.get('id')?.setValue(this.registro.id);
     // this.myForm.get('tipo_carne')?.setValue(this.registro.tipo_carne);
   }
@@ -89,11 +84,7 @@ export class DetailPage implements OnInit {
   grabar(){
     // console.log(this.registro);
     // console.log(this.myForm.value);
-    
-    this.setValue('fecha_sa', this.utilsService.getDateToString(new Date()));
-    this.setValue('estado', EstadoCoche.Transferencia); //siguiente flujo
-
-    this.registroService.updateSalidaLimpieza(this.myForm.value).then(resp=>{
+    this.registroService.putSalidaLimpieza(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
       // alert("Datos actualizados." + resp);

@@ -8,7 +8,7 @@ import { UtilsService } from './utils.service';
 export class ApiService {
 
   //apiUrl:string = 'http://localhost/eurofish-api/public/api/v1';
-  private apiUrl:string = 'http://localhost:3000';
+  private apiUrl:string = 'http://localhost:3000/api';
   //apiUrl:string = 'http://192.168.248.179:3000';
 
   constructor(public http: HttpClient, public utils: UtilsService) { }
@@ -22,7 +22,7 @@ export class ApiService {
           //resolve(res.json());
           resolve(res);
         }, (err) => {
-          console.error(err);
+          // console.error(err);
           reject(err);
         });
     });

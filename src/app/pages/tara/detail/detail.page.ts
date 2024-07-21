@@ -105,7 +105,7 @@ export class DetailPage implements OnInit {
     this.setValue('fecha_ta', this.utilsService.getDateToString(new Date()));
     this.setValue('estado', EstadoCoche.Finalizado); //siguiente flujo
 
-    this.registroService.updateTara(this.myForm.value).then(resp=>{
+    this.registroService.putTara(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
       // alert("Datos actualizados." + resp);

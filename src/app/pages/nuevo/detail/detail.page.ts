@@ -6,7 +6,6 @@ import { AlertController } from '@ionic/angular';
 import { Registro } from '../../../models/registro.model';
 import { RegistroService } from '../../../services/registro.service';
 import { UtilsService } from '../../../services/utils.service';
-import { EstadoCoche } from '../../../enums/estado-coche';
 
 @Component({
   selector: 'app-detail',
@@ -42,9 +41,7 @@ export class DetailPage implements OnInit {
   private controles(){
     return new FormGroup({
       id: new FormControl(), 
-      fecha_nu: new FormControl(), 
-      turno_nuevo: new FormControl("1"),
-      estado: new FormControl()
+      turno_nuevo: new FormControl("1")
     });
   }
   
@@ -81,13 +78,10 @@ export class DetailPage implements OnInit {
   }
   
   grabar(){
-    // console.log(this.registro);
-    // console.log(this.myForm.value);
+    console.log(this.registro);
+    console.log(this.myForm.value);
     
-    this.setValue('fecha_nu', this.utilsService.getDateToString(new Date()));
-    this.setValue('estado', EstadoCoche.Pesaje); //siguiente flujo
-
-    this.registroService.updateNuevo(this.myForm.value).then(resp=>{
+    this.registroService.putNuevo(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
       // alert("Datos actualizados." + resp);

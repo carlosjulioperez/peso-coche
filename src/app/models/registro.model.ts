@@ -9,7 +9,6 @@ export interface Registro{
   dia_produccion: string;
   turno: number;
   tipo_carne: string;
-  tipo_busqueda: string;
   coche: number;
   coche_nuevo: number;
   turno_nuevo: number;
@@ -23,5 +22,4 @@ export interface Registro{
   fecha_pe: string; 
   fecha_as: string; 
   fecha_ta: string; 
-  estado: string;
 }

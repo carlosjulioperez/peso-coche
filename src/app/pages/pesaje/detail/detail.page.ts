@@ -87,7 +87,7 @@ export class DetailPage implements OnInit {
     this.setValue('fecha_pe', this.utilsService.getDateToString(new Date()));
     this.setValue('estado', EstadoCoche.Asignacion); //siguiente flujo
 
-    this.registroService.updatePesaje(this.myForm.value).then(resp=>{
+    this.registroService.putPesaje(this.myForm.value).then(resp=>{
       console.log("Actualizando registro...");
       console.log(resp);
       // alert("Datos actualizados." + resp);

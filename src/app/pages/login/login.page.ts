@@ -46,8 +46,6 @@ export class LoginPage implements OnInit {
         this.apiService.getLogin(this.myForm.value, '/login').then(async (resp:any) => {
           
           console.log(resp[0]);
-          //var respuesta = JSON.parse(resp);
-          //console.log(respuesta);
 
           if(resp){
             if(resp.error){
